@@ -20,6 +20,8 @@ io.on('connection', socket => {
     socket.on('entered_room', roomId => {
         console.log(`${socket.id} entered room ${roomId}`);
         
+        socket.broadcast.emit('new_user_room', { id: socket.id });
+
         socket.on('left_room', () => {
             console.log(`${socket.id} left room ${roomId}`);
         });
